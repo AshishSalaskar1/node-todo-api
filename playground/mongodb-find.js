@@ -18,4 +18,5 @@ MongoClient.connect(conUrl,{useNewUrlParser : true},(err,client) => {
     });
 
     client.close();
+    
 });
