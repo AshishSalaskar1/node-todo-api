@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const hbs = require('hbs');
 const {ObjectID} = require('mongodb');
 
 const {mongoose} = require('./db/mongoose');
@@ -9,8 +10,14 @@ const {User} = require('./models/user');
 const port = process.env.PORT || 3000;
 
 let app = express();
+app.set('view engine','hbs');
+app.use(express.static("./../public"));
 
 app.use(bodyParser.json());
+
+app.get('/',(req,res) => {
+   res.render('./../public/about.hbs');
+})
 
 app.post('/todos',(req,res) => {
 
